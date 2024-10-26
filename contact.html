@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Контакт</title>
+    <script src="js/contact.js"></script>
+</head>
+<body>
+<div class="nav-div">
+    <nav>
+        <ul>
+            <li class="list-option"><a href="mainpage.html">Главная страница</a></li>
+            <li id="submenu-item" class="submenu-par"><a href="myinterests.html"><span class="list-option">Мои интересы</span></a>
+                <ul class="submenu">
+                    <li><a href="myinterests.html#hobby">Хобби</a></li>
+                    <li><a href="myinterests.html#books">Книги</a></li>
+                    <li><a href="myinterests.html#music">Музыка</a></li>
+                    <li><a href="myinterests.html#films">Фильмы</a></li>
+                </ul>
+            </li>
+            <li class="list-option"><a href="study.html">Учёба</a></li>
+            <li class="list-option"><a href="album.html">Фотоальбом</a></li>
+            <li class="list-option"><a href="aboutme.html">Обо мне</a></li>
+            <li class="list-option"><a href="history.html">История просмотра</a></li>
+            <li class="list-option"><a href="test.html">Тест</a></li>
+            <li id="clock"></li>
+        </ul>
+    </nav>
+</div>
+<div class="main-body" style="margin-bottom: 50px">
+    <header  style="text-align: center">
+        <h1>Контакты</h1>
+    </header>
+    <div class="form">
+        <form method="post" action="mailto:ksenia_krr@mail" id="contactForm" name="contactForm" >
+            <div class="form-div">
+                <label>Фамилия Имя Отчество:
+                    <input type="text" name="fio" class="field" >
+                    <span class="error-message" id="fio-error">Введите корректные данные ФИО.</span>
+                </label>
+                <br><br><label>Пол:
+                    <input type="radio" name="gender" value="man"> Мужской
+                    <input type="radio" name="gender" value="woman"> Женский
+                    <span class="error-message" id="gender-error">Выберите ваш пол.</span>
+                </label>
+                <br><br><label>Дата рождения:
+                    <input type="text" name="birthday" id="birthday" style="margin-right: 10px" class="field" readonly>
+                    <span class="error-message-calendar" id="birthday-error"></span>
+                </label>
+                <div class="calendar-container" id="calendar-container">
+                    <div>
+                        <select  class="scrollbar" name="month" id="month"></select>
+                        <select class="scrollbar" name="year" id="year"></select>
+                    </div>
+                    <div class="calendar" id="days"></div>
+                    <div style="width: 30%;margin-right: auto; margin-left: auto">
+                        <p style="margin-top: 10px; text-align: center;" class="calendar-but" id="calendar-but">OK</p>
+                    </div>
+                </div>
+                <br><br><label>E-mail:
+                    <input type="email" name="email" class="field">
+                    <span class="error-message" id="email-error">Введите ваш e-mail корректно.</span>
+                </label>
+                <br><br><label>Телефон:
+                    <input type="tel" name="phone" class="field">
+                    <span class="error-message" id="phone-error">Введите корректный номер телефона.</span>
+                </label>
+                <br><br><label >Сообщение:
+                    <textarea style="resize: none; margin-top: 10px" name="message" rows="4" cols="53" class="field"></textarea>
+                    <span class="error-message" id="message-error">Введите сообщение.</span>
+                </label>
+                <div style="display: flex; justify-content: space-evenly; margin-top: 30px">
+                    <button style="border-radius: 10px;" class="but" id="submit-btn" type="submit">Отправить</button>
+                    <button style="border-radius: 10px;" class="but" id="reset-btn" type="reset">Очистить форму</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    <script src="js/viewCounterStorage.js"></script>
+    <script>
+        increaseCounter();
+    </script>
+    <script src="js/listUpdater.js"></script>
+    <script src="js/clockUpdate.js"></script>
+    <script src="js/calendar.js"></script>
+</body>
+</html>

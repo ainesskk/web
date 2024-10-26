@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Фотоальбом</title>
+    <style>
+        .photo{
+            width:350px; 
+            float:left; 
+            text-align:center;
+        }
+        .photo3 {
+            width:466px;
+            float:left;
+            text-align:center;
+        }
+        .pBlock{
+            max-width:1400px; 
+            float: right;
+        }
+        img {
+            max-height: 250px;
+        }
+        ul {
+            width: 100%;
+            font-family: Verdana;
+            font-size: 120%;
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        ul li{
+            margin-left: 50px;
+            background-color: #abc4ff;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            padding: 10px;
+            float: left;
+        }
+    </style>
+    <script src="js/album.js"></script>
+</head>
+<body>
+    <div class="main-body">
+        <header style="margin-bottom: 0px">
+            <h1>Фотоальбом</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="mainpage.html">Главная страница</a></li>
+            </ul>
+        </nav>
+        <div style="margin-top: 50px; margin-right: 50px;">
+            <div class="pBlock">
+                <script>
+                    setPhotos(1, 4);
+                </script>
+            </div>
+
+            <div class="pBlock">
+                <script>
+                    setPhotos(5, 4);
+                </script>
+            </div>
+            <div class="pBlock">
+                <script>
+                    setPhotos(9, 4);
+                </script>
+            </div>
+            <div class="pBlock">
+                <script>
+                    setPhotos(13, 3);
+                </script>
+            </div>
+        </div>
+    </div>
+    <script src="js/viewCounterStorage.js"></script>
+    <script>
+        increaseCounter();
+    </script>
+    <script src="js/photoOpener.js"></script>
+</body>
+</html>

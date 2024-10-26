@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+
+</head>
+<body>
+    <div class="nav-div">
+        <nav>
+            <ul >
+                <li class="list-option"><a href="aboutme.html">Обо мне</a></li>
+                <li id="submenu-item" class="submenu-par"><a href="myinterests.html"><span class="list-option">Мои интересы</span></a>
+                    <ul class="submenu">
+                        <li><a href="myinterests.html#hobby">Хобби</a></li>
+                        <li><a href="myinterests.html#books">Книги</a></li>
+                        <li><a href="myinterests.html#music">Музыка</a></li>
+                        <li><a href="myinterests.html#films">Фильмы</a></li>
+                    </ul>
+                </li>
+                <li class="list-option" ><a href="study.html">Учёба</a></li>
+                <li class="list-option"><a href="album.html">Фотоальбом</a></li>
+                <li class="list-option"><a href="contact.html">Контакт</a></li>
+                <li class="list-option"><a href="history.html">История просмотра</a></li>
+                <li class="list-option"><a href="test.html">Тест</a></li>
+                <li id="clock"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-body">
+        <header style="margin-top: 50px">
+            <h1>Главная страница</h1>
+        </header>
+        <div style="display: flex; margin-left: auto;  margin-right: auto;">
+            <div style="margin: auto; width: 315px">
+                <p class="block" style="border: 20px solid  #ccdbfd;">
+                    ФИО: <b>Крюкова Ксения Максимовна</b><br>
+                    Группа: <b>ИС\б-22-1-о</b>
+                </p>
+            </div>
+            <div>
+                <img style="margin-right: 190px; width: 100%" src="img/main.jpg" alt="это я">
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <footer>
+        <p>ЛР №1 <strong>«Исследование возможностей языка разметки гипертекстов HTML и каскадных таблиц стилей CSS»</strong></p>
+    </footer>
+    <script src="js/viewCounterStorage.js"></script>
+    <script>
+        increaseCounter();
+    </script>
+    <script src="js/listUpdater.js"></script>
+    <script src="js/clockUpdate.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Обо мне</title>
+    <style>
+        .text {
+            font-size: 140%;
+            font-family: Verdana;
+            background-color: #abc4ff;
+            color: #49536c;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            text-indent: 30px;
+        }
+        img{
+            max-width: 40%; 
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-div">
+        <nav>
+            <ul>
+                <li class="list-option"><a href="mainpage.html">Главная страница</a></li>
+                <li class="list-option"><a href="study.html">Учёба</a></li>
+                <li id="submenu-item" class="submenu-par"><a href="myinterests.html"><span class="list-option">Мои интересы</span></a>
+                    <ul class="submenu">
+                        <li><a href="myinterests.html#hobby">Хобби</a></li>
+                        <li><a href="myinterests.html#books">Книги</a></li>
+                        <li><a href="myinterests.html#music">Музыка</a></li>
+                        <li><a href="myinterests.html#films">Фильмы</a></li>
+                    </ul>
+                </li>
+                <li class="list-option"><a href="album.html">Фотоальбом</a></li>
+                <li class="list-option"><a href="contact.html">Контакт</a></li>
+                <li class="list-option"><a href="history.html">История просмотра</a></li>
+                <li class="list-option"><a href="test.html">Тест</a></li>
+                <li id="clock"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-body">
+        <header>
+            <h1>Обо мне</h1>
+        </header>
+        <div style="margin-bottom: 50px">
+            <div style="margin-top: 100px;">
+                <div style="float:right; max-width: 700px; text-align: center;">
+                    <img src="img/me1.jpg" alt="me1">
+                </div>
+                <div style="max-width: 700px; padding-top: 40px;">
+                <span class="text">Ксения Собчак родилась в Ленинграде 5 ноября 1981 года в семье Анатолия Собчака и Людмилы Нарусовой.
+                    Собчак был преподавателем Ленинградского государственного университета, затем занялся политической деятельностью
+                    и с 1991 по 1996 год был мэром Санкт-Петербурга. Нарусова также была преподавателем, на данный момент — сенатор от Тувы.
+                    У Собчак есть старшая сестра Мария от первого брака отца, но они не общаются, говорила журналистка в интервью «РБК Стиль».</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="margin-top: 100px;">
+                <div style="float:right; max-width: 700px; padding-top: 40px;">
+                <span class="text">Собчак училась в школе при Российском государственном педагогическом университете (РГПУ)
+                    им. А.И. Герцена, а также изучала изобразительное искусство при Эрмитаже и занималась балетом в Мариинском театре.
+                    В интервью Юрию Дудю (признан Минюстом иноагентом) она рассказала, что в 17 лет ушла из дома. Сначала ее обеспечивал
+                    гражданский муж (его имя она не раскрыла), а затем она начала зарабатывать сама.</span>
+                </div>
+                <div style="max-width: 700px; text-align: center;">
+                    <img src="img/me2.jpg" alt="me2">
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="margin-top: 100px;">
+                <div style="float:right; max-width: 700px; text-align: center;">
+                    <img src="img/me3.jpg" alt="me3" style="max-width: 60%;">
+                </div>
+                <div style="max-width: 700px; padding-top: 20px;">
+                <span class="text">Свою работу на телевидении Собчак начала на ТНТ с проекта «Дом-2», ведущей которого она была с 2004 по 2012 год.
+                    В интервью «РБК Стиль» она говорила, что не жалеет об этом периоде в своей жизни, он был «странным», но в то же
+                    время «веселым и хорошим». Тем не менее, отметила Собчак, из-за него для нее закрылись некоторые возможности, например возможность
+                    быстрее сделать карьеру «в серьезной журналистике».</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/viewCounterStorage.js"></script>
+    <script>
+        increaseCounter();
+    </script>
+    <script src="js/listUpdater.js"></script>
+    <script src="js/clockUpdate.js"></script>
+</body>
+</html>

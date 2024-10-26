@@ -1,0 +1,344 @@
+body {
+    background-color: #edf2fa;
+    margin: 0;
+}
+.main-body{
+    width: 1500px;
+    margin-left: 200px;
+}
+h1, h2, h3, p, span , td {
+    color: #49536c;
+    font-family: Arial;
+}
+header{
+    color: #49536c;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.list-img, .cat-list-img {
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 17px;
+    border: 0px;
+}
+.list-option {
+    font-family: Verdana;
+    font-size: 100%;
+    vertical-align: middle;
+}
+
+.nav-div {
+    background-color: #ccdbfd;
+    padding: 20px;
+}
+
+.nav-div nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Verdana;
+    font-size: 110%;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    list-style: none;
+    vertical-align: middle;
+}
+
+.nav-div nav > ul li {
+    flex: 1;
+    text-align: center;
+    border-radius: 20px;
+    align-self: center;
+    vertical-align: middle;
+}
+
+.nav-div nav > ul li[class="list-option"]:hover, li[class="submenu-par"]:hover {
+    background-color: rgba(171, 196, 255, 0.88);
+    box-shadow: 0 0 20px 10px #abc4ff;
+    vertical-align: middle;
+}
+
+a {
+    color: #49536c;
+    text-decoration: none;
+}
+.submenu-par {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.submenu {
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    border-radius: 20px;
+    transition: all 0.5s ease-in;
+}
+
+.submenu li {
+    background-color: rgba(73, 83, 108, 0.75);
+    width: 150px;
+    border-radius: 20px;
+    list-style: none;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: none;
+}
+
+.submenu li:hover {
+    background-color: rgb(73, 83, 108);
+    box-shadow: none;
+}
+
+.submenu li a {
+    color: #ccdbfd;
+}
+
+footer{
+    background-color: #ccdbfd;
+    font-size: 120%;
+    font-family: Verdana;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+img{
+    border-radius: 20px;
+    border: 10px solid #abc4ff;
+}
+.info {
+    background-color: #ccdbfd;
+    border-radius: 20px;
+}
+.block {
+    background-color: #ccdbfd;
+    font-family: Verdana;
+    text-align: center;
+    font-size: 120%;
+    border-radius: 20px;
+}
+.form{
+    background-color: #abc4ff;
+    color: #49536c;
+    width: 700px;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top:30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 120%;
+    font-family: Verdana;
+    border-radius: 20px;
+}
+
+.but, .field, .scrollbar {
+    font-size: 90%;
+    color: #49536c;
+    border: 2px solid #edf2fa;
+    font-family: Verdana;
+}
+
+button{
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+}
+
+.but:hover{
+    border: 2px solid  #ccdbfd;
+    background-color: #ccdbfd;
+}
+
+.but:active{
+    border: 2px solid rgba(73, 83, 108, 0.75);
+}
+
+.calendar-container{
+    display: none;
+    width: 252px;
+    background: rgba(252, 237, 242, 0.93);
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    position: fixed;
+    z-index:999;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.scrollbar {
+    max-height: 100px;
+    overflow-y: auto;
+}
+.calendar{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+.day-block{
+    color: #49536c;
+    padding:5px;
+    width: 22px;
+    margin: 2px;
+    text-align: center;
+    border-radius: 10px;
+    background: #ffd1d4;
+}
+
+.day-block:hover{
+    background: #ffb7c5;
+}
+
+.calendar-but{
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0;
+
+    background: #ffb7c5;
+}
+.calendar-but:hover{
+    background: #ff8fab;
+}
+
+.form-div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+textarea{
+    caret-color: #49536c;
+    resize: none;
+}
+
+input[class="field"], input[class="text"], input[class="field"], select, textarea {
+    caret-color: #49536c;
+    border-radius: 10px;
+    border: 2px solid white;
+    outline: none;
+}
+
+input[class="field"]:focus, input[class="field"]:hover,
+input[class="text"]:focus, input[class="text"]:hover,
+input[class="field"]:focus, input[class="field"]:hover,
+textarea:focus, textarea:hover {
+    border: 2px solid rgba(73, 83, 108, 0.75);
+}
+.photoForm{
+    display: none;
+    position: absolute;
+    width: 600px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    text-align: center;
+    background: #abc4ff;
+    border-radius: 20px;
+    padding: 10px;
+    transition: opacity 1s ease;
+}
+
+.photoForm.show{
+    opacity: 1;
+}
+
+.form-but{
+    position: relative;
+    margin-top: 30px;
+    width: 300px;
+
+    font-size: 120%;
+    color: #49536c;
+    border: 2px solid #edf2fa;
+    font-family: Verdana;
+}
+
+.form-but:hover{
+    border: 2px solid  #ccdbfd;
+    background-color: #ccdbfd;
+}
+
+.form-but:active{
+    border: 2px solid rgba(73, 83, 108, 0.75);
+}
+
+.field.error{
+    border-radius: 10px;
+    background: rgba(255, 109, 107, 0.9);
+}
+
+.field.valid{
+    border-radius: 10px;
+    background: rgba(163, 255, 176, 0.9);
+}
+span.error-message{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+.error-message {
+    color: rgba(255, 109, 107, 0.9);
+    font-size: 90%;
+    font-weight: bold;
+    display: none;
+}
+.error-message-calendar{
+    position: absolute;
+    color: rgba(255, 109, 107, 0.9);
+    font-size: 90%;
+    font-weight: bold;
+    display: none;
+}
+.error-message.active, .error-message-calendar.active{
+    display: block;
+}
+.submit-btn {
+    background-color: grey;
+    cursor: not-allowed;
+}
+.submit-btn.active {
+    background-color: green;
+    cursor: pointer;
+}
+
+.current-session-div{
+    text-align: center;
+    display: inline-block;
+    width:50%;
+}
+.all-session-div{
+    text-align: center;
+    display: inline-block;
+    width:50%;
+}
+.current-session-table-div, .all-session-table-div{
+    display: flex;
+    justify-content: center;
+}
+
+.current-session-table, .all-session-table{
+    font-size: 120%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: #49536c;
+    background: #ccdbfd;
+    font-family: Verdana;
+}
+
+.current-session-table td, .current-session-table th,
+.all-session-table td, .all-session-table th{
+    padding: 5px 10px 5px 10px;
+}

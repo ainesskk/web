@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Тест</title>
+    <script src="js/test.js"></script>
+    <script src="js/contact.js"></script>
+</head>
+<body>
+    <div class="nav-div">
+        <nav>
+            <ul>
+                <li class="list-option"><a href="mainpage.html">Главная страница</a></li>
+                <li id="submenu-item" class="submenu-par"><a href="myinterests.html"><span class="list-option">Мои интересы</span></a>
+                    <ul class="submenu">
+                        <li><a href="myinterests.html#hobby">Хобби</a></li>
+                        <li><a href="myinterests.html#books">Книги</a></li>
+                        <li><a href="myinterests.html#music">Музыка</a></li>
+                        <li><a href="myinterests.html#films">Фильмы</a></li>
+                    </ul>
+                </li>
+                <li class="list-option"><a href="aboutme.html">Обо мне</a></li>
+                <li class="list-option"><a href="album.html">Фотоальбом</a></li>
+                <li class="list-option"><a href="contact.html">Контакт</a></li>
+                <li class="list-option"><a href="history.html">История просмотра</a></li>
+                <li class="list-option"><a href="study.html">Учеба</a></li>
+                <li id="clock"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-body" >
+        <header style="text-align: center">
+            <h1>Тест по основам дискретной математики</h1>
+        </header>
+        <div  class="form" style="width: 1000px; margin-top: 50px; margin-bottom: 50px">
+            <form method="post" action="mailto:ksenia_krr@mail.ru" name="testForm" onsubmit="return checkInputText()" enctype="text/plain">
+                <div class="form-div">
+                    <label>Фамилия Имя Отчество:
+                        <input type="text" name="fio" class="field" ><br><br></label>
+                    <label>Группа:
+                        <select name="group" class="field">
+                            <option value="">Выберите группу</option>
+                            <optgroup label="1 курс">
+                                <option value="24-1">ИТ/б-24-01
+                                <option value="24-2">ИТ/б-24-02
+                                <option value="24-3">ИТ/б-24-03
+                                <option value="24-4">ИТ/б-24-04
+                            </optgroup>
+                            <optgroup label="2 курс">
+                                <option value="23-1">ИТ/б-23-01
+                                <option value="23-2">ИТ/б-23-02
+                                <option value="23-3">ИТ/б-23-03
+                                <option value="23-4">ИТ/б-23-04
+                            </optgroup>
+                            <optgroup label="3 курс">
+                                <option value="22-1">ИТ/б-22-01
+                                <option value="22-2">ИТ/б-22-02
+                                <option value="22-3">ИТ/б-22-03
+                                <option value="22-4">ИТ/б-22-04
+                            </optgroup>
+                            <optgroup label="4 курс">
+                                <option value="21-1">ИТ/б-21-01
+                                <option value="21-2">ИТ/б-21-02
+                                <option value="21-3">ИТ/б-21-03
+                                <option value="21-4">ИТ/б-21-04
+                            </optgroup>
+                        </select><br><br></label>
+                    <h3>Вопросы по дисциплине</h3>
+                    <br>
+                    <label>1. Какое из следующих утверждений является истинным для множества (A) и множества (B)?</label><br><br>
+                    <input type="radio" name="question 1" value="1" >
+                    <label>(A) объединение (B) содержит все элементы из (A) и (B)</label><br>
+                    <input type="radio" name="question 1" value="2" >
+                    <label>(A) пересечение (B) содержит все элементы из (A) и (B)</label><br>
+                    <input type="radio" name="question 1" value="3" >
+                    <label>(A) объединение (B) содержит все элементы из (A) и (B)</label><br>
+                    <input type="radio" name="question 1" value="4" >
+                    <label>(B) разность (A) содержит все элементы из (A)</label><br><br>
+                    <div style="text-align: justify;">
+                        <label >2. Какому закону соответствует формулировка: "если в выражении используется только операция дизъюнкции или
+                            только операция конъюнкции, то можно пренебрегать скобками или произвольно их расставлять"?</label>
+                    </div><br>
+                    <select name="question 2" class="field">
+                        <option value="">Выберите вариант</option>
+                        <option value="1">Закон де Моргана</option>
+                        <option value="2">Закон дистрибутивности</option>
+                        <option value="3">Закон ассоциативности</option>
+                        <option value="4">Закон рефлексивности</option>
+                        <option value="5">Закон коммутативности</option>
+                    </select>
+                    <br><br>
+                    <div style="text-align: justify;">
+                        <label>3. Вставьте слово: ... множеств A и B называется множество, состоящее из всех элементов, которые одновременно
+                            принадлежат и A, и B.</label>
+                    </div><br>
+                    <textarea name="question 3" rows="4" cols="76" class="field" ></textarea><br><br>
+                    <div style="display: flex; justify-content: space-evenly">
+                        <button class="but" type="submit">Отправить</button>
+                        <button class="but" type="reset">Очистить форму</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/viewCounterStorage.js"></script>
+    <script>
+        increaseCounter();
+    </script>
+    <script src="js/listUpdater.js"></script>
+    <script src="js/clockUpdate.js"></script>
+</body>
+</html>

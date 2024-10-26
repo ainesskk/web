@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>История просмотра</title>
+
+    <script src="js/viewCounterStorage.js"></script>
+</head>
+<body>
+    <div class="nav-div">
+        <nav>
+            <ul>
+                <li class="list-option"><a href="mainpage.html">Главная страница</a></li>
+                <li id="submenu-item" class="submenu-par"><a href="myinterests.html"><span class="list-option">Мои интересы</span></a>
+                    <ul class="submenu">
+                        <li><a href="myinterests.html#hobby">Хобби</a></li>
+                        <li><a href="myinterests.html#books">Книги</a></li>
+                        <li><a href="myinterests.html#music">Музыка</a></li>
+                        <li><a href="myinterests.html#films">Фильмы</a></li>
+                    </ul>
+                </li>
+                <li class="list-option"><a href="study.html">Учёба</a></li>
+                <li class="list-option"><a href="album.html">Фотоальбом</a></li>
+                <li class="list-option"><a href="aboutme.html">Обо мне</a></li>
+                <li class="list-option"><a href="contact.html">Контакт</a></li>
+                <li class="list-option"><a href="test.html">Тест</a></li>
+                <li id="clock"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-body">
+        <header>
+            <h1>История просмотра</h1>
+        </header>
+        <div style="display: flex; margin-top: 50px">
+            <div class="current-session-div">
+                <h2>История текущего сеанса</h2>
+                <div class="current-session-table-div">
+                    <table class="current-session-table" id="current-session-table">
+                        <tr>
+                            <th>Название страницы</th>
+                            <th>Количество посещений</th>
+                        </tr>
+                        <tr>
+                            <td>Главная страница</td>
+                            <td class="td-cur" id="main-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>Обо мне</td>
+                            <td class="td-cur" id="aboutme-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>Мои интересы</td>
+                            <td class="td-cur" id="interests-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>Фотоальбом</td>
+                            <td class="td-cur" id="album-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>Контакт</td>
+                            <td class="td-cur" id="contact-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>Учёба</td>
+                            <td class="td-cur" id="study-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>Тест</td>
+                            <td class="td-cur" id="test-views-cur"></td>
+                        </tr>
+                        <tr>
+                            <td>История просмотра</td>
+                            <td class="td-cur" id="history-views-cur"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="all-session-div">
+                <h2>История за все время</h2>
+                <div class="all-session-table-div">
+                    <table class="all-session-table" id="all-session-table">
+                        <tr>
+                            <th>Название страницы</th>
+                            <th>Количество посещений</th>
+                        </tr>
+                        <tr>
+                            <td>Главная страница</td>
+                            <td class="td-all" id="main-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>Обо мне</td>
+                            <td class="td-all" id="aboutme-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>Мои интересы</td>
+                            <td class="td-all" id="interests-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>Фотоальбом</td>
+                            <td class="td-all" id="album-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>Контакт</td>
+                            <td class="td-all" id="contact-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>Учёба</td>
+                            <td class="td-all" id="study-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>Тест</td>
+                            <td class="td-all" id="test-views-all"></td>
+                        </tr>
+                        <tr>
+                            <td>История просмотра</td>
+                            <td class="td-all" id="history-views-all"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        increaseCounter();
+        updateCounter();
+    </script>
+    <script src="js/listUpdater.js"></script>
+    <script src="js/clockUpdate.js"></script>
+</body>
+</html>

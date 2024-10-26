@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Учёба</title>
+    <style>
+        .boldtxt{
+            font-weight: bold;
+        }
+        .table, th, td{
+            width: 1000px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            margin-top: 50px; 
+            margin-bottom: 100px;
+            text-align: center; 
+            background-color: white;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-div">
+        <nav>
+            <ul>
+                <li class="list-option"><a href="mainpage.html">Главная страница</a></li>
+                <li id="submenu-item" class="submenu-par"><a href="myinterests.html"><span class="list-option">Мои интересы</span></a>
+                    <ul class="submenu">
+                        <li><a href="myinterests.html#hobby">Хобби</a></li>
+                        <li><a href="myinterests.html#books">Книги</a></li>
+                        <li><a href="myinterests.html#music">Музыка</a></li>
+                        <li><a href="myinterests.html#films">Фильмы</a></li>
+                    </ul>
+                </li>
+                <li class="list-option"><a href="aboutme.html">Обо мне</a></li>
+                <li class="list-option"><a href="album.html">Фотоальбом</a></li>
+                <li class="list-option"><a href="contact.html">Контакт</a></li>
+                <li class="list-option"><a href="history.html">История просмотра</a></li>
+                <li class="list-option"><a href="test.html">Тест</a></li>
+                <li id="clock"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-body">
+        <header  style="text-align: center">
+            <h1>Учеба</h1>
+        </header>
+        <div class="info" style="width: 550px; margin-left: auto; margin-right: auto; margin-top: 50px;">
+            <div style="padding: 10px;">
+                <p class="block" ><b><i>Севастопольский государственный университет (СевГУ)<br>Кафедра «Информационные системы»</i></b></p>
+            </div>
+        </div>
+        <div>
+            <table class="table">
+                <tr class="boldtxt">
+                    <td rowspan="3" style="width: 5%">№</td>
+                    <td rowspan="3" style="width: 50%">Дисциплина</td>
+                    <td colspan="12" style="width: 45%"><p>Часов в неделю</p><p>(Лекций, Лаб.раб, Практ. раб)</p></td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="boldtxt">Первый курс</td>
+                    <td colspan="6" class="boldtxt">Второй курс</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="boldtxt">1 семестр</td>
+                    <td colspan="3" class="boldtxt">2 семестр</td>
+                    <td colspan="3" class="boldtxt">3 семестр</td>
+                    <td colspan="3" class="boldtxt">4 семестр</td>
+                </tr>
+                <tr>
+                    <td>1</td><td style="text-align: left;"><i>Экология</i></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td><b>1</b></td><td><b>0</b></td><td><b>1</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>2</td><td style="text-align: left;"><i>Высшая математика</i></td>
+                    <td><b>3</b></td><td><b>0</b></td><td><b>3</b></td><td><b>3</b></td><td><b>0</b></td><td><b>3</b></td>
+                    <td><b>2</b></td><td><b>0</b></td><td><b>2</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>3</td><td style="text-align: left;"><i>Русский язык и культура речи</i></td>
+                    <td><b>1</b></td><td><b>0</b></td><td><b>2</b></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>4</td><td style="text-align: left;"><a href="test.html"><i><b>Основы дискретной математики</b></i></a></td>
+                    <td><b>2</b></td><td><b>0</b></td><td><b>1</b></td><td><b>3</b></td><td><b>0</b></td><td><b>2</b></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>5</td><td style="text-align: left;"><i>Основы программирования и алгоритмические языки</i></td>
+                    <td><b>3</b></td><td><b>2</b></td><td><b>0</b></td><td><b>3</b></td><td><b>3</b></td><td><b>0</b></td>
+                    <td><b>0</b></td><td><b>0</b></td><td><b>1</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>6</td><td style="text-align: left;"><i>Основы экологии</i></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td><b>1</b></td><td><b>0</b></td><td><b>0</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>7</td><td style="text-align: left;"><i>Теория вероятностей и математическая статистика</i></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td><b>3</b></td><td><b>1</b></td><td><b>0</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>8</td><td style="text-align: left;"><i>Физика</i></td>
+                    <td><b>2</b></td><td><b>2</b></td><td><b>0</b></td><td><b>2</b></td><td><b>2</b></td><td><b>0</b></td>
+                    <td><b>2</b></td><td><b>1</b></td><td><b>0</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>9</td><td style="text-align: left;"><i>Основы электротехники и электроники</i></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td><b>2</b></td><td><b>1</b></td><td><b>1</b></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>10</td><td style="text-align: left;"><i>Численные методы в информатике</i></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td><b>2</b></td><td><b>2</b></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td><td><b>1</b></td>
+                </tr>
+                <tr>
+                    <td>11</td><td style="text-align: left;"><i>Методы исследования операций</i></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td><b>1</b></td><td><b>1</b></td><td><b>0</b></td><td><b>2</b></td><td><b>1</b></td><td><b>1</b></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="js/viewCounterStorage.js"></script>
+    <script>
+        increaseCounter();
+    </script>
+    <script src="js/listUpdater.js"></script>
+    <script src="js/clockUpdate.js"></script>
+</body>
+</html>
