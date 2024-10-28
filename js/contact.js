@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const field = contactForm[fieldName];
         const error = document.getElementById(`${fieldName}-error`);
         let isValid = false;
-
+        console.log(`Validating field: ${fieldName}, value: ${field.value}`);
         switch (fieldName) {
             case 'fio':
                 isValid = checkFio(field.value);

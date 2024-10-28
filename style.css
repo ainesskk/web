@@ -193,6 +193,15 @@ button{
     background: #ffd1d4;
 }
 
+.weekday-block{
+    color: #49536c;
+    padding:5px;
+    width: 22px;
+    margin: 2px;
+    text-align: center;
+    border-radius: 10px;
+}
+
 .day-block:hover{
     background: #ffb7c5;
 }
