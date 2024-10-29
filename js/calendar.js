@@ -10,6 +10,9 @@ const monthsArray = [
 const days = [
     "Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"
 ]
+const daysOutput={
+    "Вс":6, "Пн":0, "Вт":1, "Ср":2, "Чт":3, "Пт":4, "Сб":5
+}
 const monthsDays = [
     31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 ]
@@ -45,15 +48,29 @@ function outDays(){
     if((((year%4 === 0)&&(year%100 !== 0))||(year%400 === 0))&&(month===1))
         lastDay = monthsDays[month]+1;
     else lastDay = monthsDays[month];
-    for (let i = 0; i <= 6; i++) {
-        let date;
-        date = new Date(`${yearSelect.value}-0${month+1 < 10 ? '0' + (month+1) : (month+1)}-${i + 1 < 10 ? '0' + (i + 1) : (i + 1)}`);
-        console.log(date);
-        const dayBlock = document.createElement("p");
-        const curDay = date.getDay();
+    for (let i = 1; i <= 6; i++) {
 
-        console.log(curDay);
-        dayBlock.textContent = days[curDay];
+        // let date;
+        // date = new Date(`${yearSelect.value}-0${month+1 < 10 ? '0' + (month+1) : (month+1)}-${i + 1 < 10 ? '0' + (i + 1) : (i + 1)}`);
+        // console.log(date);
+        const dayBlock = document.createElement("p");
+        // const curDay = date.getDay();
+        //
+        // console.log(curDay);
+        dayBlock.textContent = days[i];
+        dayBlock.classList.add("weekday-block");
+        daysContainer.append(dayBlock);
+    }
+    const dayBlock = document.createElement("p");
+    dayBlock.textContent = days[0];
+    dayBlock.classList.add("weekday-block");
+    daysContainer.append(dayBlock);
+
+    let date = new Date(`${yearSelect.value}-0${month+1 < 10 ? '0' + (month+1) : (month+1)}-'01'`);
+    let cnt = date.getDay();
+    let tmp = days[cnt];
+    for(let j = 0; j<daysOutput[tmp]; j++){
+        const dayBlock = document.createElement("p");
         dayBlock.classList.add("weekday-block");
         daysContainer.append(dayBlock);
     }
