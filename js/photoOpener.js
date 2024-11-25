@@ -1,59 +1,123 @@
-let formIsClosed = true;
+$(document).ready(function() {
+    let formIsClosed = true;
+    let currentImgIndex = 0;
+    const images = $('img');
+    const form = $('<div></div>');
 
-const photos = document.querySelectorAll('img');
-photos.forEach(photo => {
-    photo.addEventListener('click', openPhoto)
-})
+    images.each(function(index) {
+        $(this).on('click', function(event) {
+            if (formIsClosed) {
+                currentImgIndex = index;
+                openPhoto(event);
+            }
+        });
+    });
 
-const bodyMain = document.querySelector('.main-body');
-const body = document.querySelector('body');
-const form = document.createElement('div')
-
-function openPhoto(event) {
-    if(formIsClosed){
-        bodyMain.style.filter = 'blur(5px)';
-        bodyMain.style.transition = '1s';
-        console.log(event.target);
-        addPhotoForm(event.target);
+    function openPhoto(event) {
+        if (formIsClosed) {
+            $('.main-body').css({
+                'filter': 'blur(5px)',
+                'transition': '1s'
+            });
+            addPhotoForm(event.target);
+        }
     }
-}
 
-function addPhotoForm(targetImg){
-     form.classList.add('photoForm');
-     form.style.display = 'block';
-     body.append(form);
-     form.style.top = `${window.scrollY + 100}px`;
+    function addPhotoForm(targetImg) {
+        form.addClass('photoForm').css('display', 'block');
+        $('body').append(form);
+        form.css('top', `${window.scrollY + 100}px`);
 
-     const img = document.createElement('img');
-     let name = getCharacters(targetImg.src);
-     img.src = `img/${name}`;
-     img.style.width = '550px';
-     img.style.maxHeight = '550px';
-     img.style.marginTop = '10px';
-     form.append(img);
+        const img = $('<img>').attr({
+            src: targetImg.src,
+            alt: targetImg.alt,
+            title: targetImg.alt
+        }).css({
+            'width': '550px',
+            'maxHeight': '550px',
+            'marginTop': '10px'
+        });
+        form.append(img);
 
-     body.style.overflow = 'hidden';
+        $('body').css('overflow', 'hidden');
 
-     const button = document.createElement('button');
-     button.classList.add('form-but');
-     button.textContent = 'Закрыть';
-     button.addEventListener('click', () => closePhotoForm(img, button));
-     form.append(button);
+        const photoDiv = $('<div></div>').addClass('photoDiv').css({
+            'display': 'flex',
+            'flex-wrap': 'wrap',
+            'justify-content': 'center',
+            'align-items': 'center',
+            'margin-top': '25px'
+        });
 
-     formIsClosed = false;
-}
+        const photoCounter = $('<p></p>').text(`фото ${$(targetImg).attr('id')} из ${images.length}`);
+        const leftArrow = $('<button></button>').addClass('form-but').text('<').css({
+            'margin': '0 20px',
+            'width': '20%'
+        });
+        const rightArrow = $('<button></button>').addClass('form-but').text('>').css({
+            'margin': '0 20px',
+            'width': '20%'
+        });
+        const closeImg = $('<img>').attr({
+            src: "img/close.png",
+            alt: "close",
+            title: "Закрыть"
+        }).addClass('form-but').css({
+            'width': '50px',
+            'background': '#fff',
+            'position': 'absolute',
+            'top': '-2%',
+            'right': '2%'
+        });
+        closeImg.on('click', function() {
+            closePhotoForm(img, closeImg, photoDiv);
+        });
 
-function closePhotoForm(img, button){
-    form.remove();
-    img.remove();
-    button.remove();
-    body.style.overflow = 'auto';
-    bodyMain.style.filter = 'none';
-    formIsClosed = true;
-}
+        leftArrow.on('click', function() {
+            changePhoto('left', img, photoCounter);
+        });
 
-function getCharacters(str) {
-    const position = str.lastIndexOf("/");
-    if (position === -1) return '';
-    return str.substring(position + 1);
-}
+        rightArrow.on('click', function() {
+            changePhoto('right', img, photoCounter);
+        });
+
+        photoDiv.append(leftArrow);
+        photoDiv.append(photoCounter);
+        photoDiv.append(rightArrow);
+        form.append(closeImg);
+        form.append(photoDiv);
+
+        formIsClosed = false;
+    }
+
+    function changePhoto(direction, img, photoCounter) {
+        if (direction === 'left') {
+            currentImgIndex = (currentImgIndex === 0) ? images.length-1 : currentImgIndex-1;
+        } else {
+            currentImgIndex = (currentImgIndex === images.length-1) ? 0 : currentImgIndex+1;
+        }
+
+        const newImg = images.eq(currentImgIndex);
+        img.fadeOut(300, function() {
+            img.attr({
+                'src': newImg.attr('src'),
+                'alt': newImg.attr('alt'),
+                'title': newImg.attr('alt')
+            });
+            img.fadeIn(300);
+        });
+
+        photoCounter.text(`фото ${newImg.attr('id')} из 15`);
+    }
+
+    function closePhotoForm(img, closeImg, photoDiv) {
+        photoDiv.remove();
+        form.remove();
+        img.remove();
+        closeImg.remove();
+        $('body').css('overflow', 'auto');
+        $('.main-body').css('filter', 'none');
+        formIsClosed = true;
+    }
+
+});

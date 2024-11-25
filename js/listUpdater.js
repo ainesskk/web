@@ -1,69 +1,59 @@
-const listOptions = window.document.querySelectorAll('.list-option');
+$(document).ready(function() {
+    const $listOptions = $('.list-option');
 
-listOptions.forEach(li => {
-    addImages(li, 'heart', 'list-img');
-    li.addEventListener('mouseover', addCat);
-    li.addEventListener('mouseout', removeCat);
-});
-
-function addImages(place, name, imgClass) {
-    const prev = document.createElement('img');
-    prev.src = `img/${name}.png`;
-    prev.classList.add(imgClass);
-    prev.style.marginRight = '5px';
-
-    const next = document.createElement('img');
-    next.src = `img/${name}.png`;
-    next.classList.add(imgClass);
-    next.style.marginLeft = '5px';
-
-    place.prepend(prev);
-    place.append(next);
-}
-
-function removeImages(place, imgClass) {
-    let images = place.querySelectorAll(imgClass);
-    images.forEach((item) => {
-        place.removeChild(item);
+    $listOptions.each(function() {
+        const $li = $(this);
+        addImages($li, 'heart', 'list-img');
+        $li.on('mouseenter', addCat);
+        $li.on('mouseleave', removeCat);
     });
-}
 
-function addCat(event) {
-    const place = event.currentTarget;
-    removeImages(place, '.list-img');
-    if (!place.querySelector('.cat-list-img')) {
-        addImages(place, 'cat', 'cat-list-img');
+    function addImages($place, name, imgClass) {
+        // Проверяем, существуют ли уже такие изображения
+        if (!$place.find(`.${imgClass}`).length) {
+            const $prev = $('<img>').attr('src', `img/${name}.png`).addClass(imgClass).css('margin-right', '5px');
+            const $next = $('<img>').attr('src', `img/${name}.png`).addClass(imgClass).css('margin-left', '5px');
+
+            $place.prepend($prev);
+            $place.append($next);
+        }
     }
-}
 
-function removeCat(event) {
-    const place = event.currentTarget;
-    removeImages(place, '.cat-list-img');
-    addImages(place, 'heart', 'list-img');
-}
+    function removeImages($place, imgClass) {
+        $place.find(`.${imgClass}`).remove();
+    }
 
+    function addCat(event) {
+        const $place = $(event.currentTarget);
+        removeImages($place, 'list-img');
+        addImages($place, 'cat', 'cat-list-img');
+    }
 
-if(document.getElementById('submenu-item')){
-    const submenu = document.getElementById('submenu-item');
-    submenu.addEventListener('mouseover', showMenu);
-    submenu.addEventListener('mouseout', hideMenu);
-}
+    function removeCat(event) {
+        const $place = $(event.currentTarget);
+        removeImages($place, 'cat-list-img');
+        addImages($place, 'heart', 'list-img');
+    }
 
+    const $submenu = $('#submenu-item');
+    if ($submenu.length) {
+        $submenu.on('mouseenter', showMenu);
+        $submenu.on('mouseleave', hideMenu);
+    }
 
-function showMenu(event) {
-    const items = document.querySelectorAll('.submenu');
-    items.forEach(item => {
-        item.style.height = "auto";
-        item.style.overflow = "visible";
-        item.style.opacity = "1";
-    });
-}
+    function showMenu(event) {
+        $('.submenu').css({
+            'height': 'auto',
+            'overflow': 'visible',
+            'opacity': '1'
+        });
+    }
 
-function hideMenu(event) {
-    const items = document.querySelectorAll('.submenu');
-    items.forEach(item => {
-        item.style.height = "0";
-        item.style.overflow = "hidden";
-        item.style.opacity = "0";
-    });
-}
+    function hideMenu(event) {
+        $('.submenu').css({
+            'height': '0',
+            'overflow': 'hidden',
+            'opacity': '0'
+        });
+    }
+});

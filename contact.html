@@ -4,7 +4,37 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
     <title>Контакт</title>
-    <script src="js/contact.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="js/modalWindow.js"></script>
+    <style>
+        .popover {
+            position: absolute;
+            width: 200px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 15px;
+            display: none;
+            z-index: 10;
+        }
+        .modal-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #ffd1d4;
+            border: 1px #ffb7c5;
+            border-radius: 10px;
+            z-index: 100;
+            display: none;
+        }
+        .blur-background {
+            filter: blur(5px);
+            transition: filter 0.3s;
+        }
+    </style>
 </head>
 <body>
 <div class="nav-div">
@@ -33,21 +63,25 @@
         <h1>Контакты</h1>
     </header>
     <div class="form">
-        <form method="post" action="mailto:ksenia_krr@mail" id="contactForm" name="contactForm" >
+        <form method="post" action="mailto:ksenia_krr@mail.ru" id="contactForm" onreset="modalWindow(event)">
             <div class="form-div">
                 <label>Фамилия Имя Отчество:
-                    <input type="text" name="fio" class="field" >
+                    <input type="text" name="fio" class="field" value="">
                     <span class="error-message" id="fio-error">Введите корректные данные ФИО.</span>
                 </label>
-                <br><br><label>Пол:
+                <div id="fio-popover" class="popover">Введите полное ФИО.</div>
+                <br><br>
+                <label>Пол:
                     <input type="radio" name="gender" value="man"> Мужской
                     <input type="radio" name="gender" value="woman"> Женский
                     <span class="error-message" id="gender-error">Выберите ваш пол.</span>
                 </label>
-                <br><br><label>Дата рождения:
-                    <input type="text" name="birthday" id="birthday" style="margin-right: 10px" class="field" readonly>
+                <br><br>
+                <label>Дата рождения:
+                    <input type="text" name="birthday" id="birthday" value="" style="margin-right: 10px" class="field" readonly>
                     <span class="error-message-calendar" id="birthday-error"></span>
                 </label>
+                <div id="birthday-popover" class="popover">Выберите свой день рождения.</div>
                 <div class="calendar-container" id="calendar-container">
                     <div>
                         <select  class="scrollbar" name="month" id="month"></select>
@@ -58,18 +92,24 @@
                         <p style="margin-top: 10px; text-align: center;" class="calendar-but" id="calendar-but">OK</p>
                     </div>
                 </div>
-                <br><br><label>E-mail:
+                <br><br>
+                <label>E-mail:
                     <input type="email" name="email" class="field">
                     <span class="error-message" id="email-error">Введите ваш e-mail корректно.</span>
                 </label>
-                <br><br><label>Телефон:
+                <div id="email-popover" class="popover">Введите действительный Email.</div>
+                <br><br>
+                <label>Телефон:
                     <input type="tel" name="phone" class="field">
                     <span class="error-message" id="phone-error">Введите корректный номер телефона.</span>
                 </label>
-                <br><br><label >Сообщение:
+                <div id="phone-popover" class="popover">Введите телефон в формате +7XXXXXXXXXX.</div>
+                <br><br>
+                <label>Сообщение:
                     <textarea style="resize: none; margin-top: 10px" name="message" rows="4" cols="53" class="field"></textarea>
                     <span class="error-message" id="message-error">Введите сообщение.</span>
                 </label>
+                <div id="message-popover" class="popover">Введите ваше сообщение здесь.</div>
                 <div style="display: flex; justify-content: space-evenly; margin-top: 30px">
                     <button style="border-radius: 10px;" class="but" id="submit-btn" type="submit">Отправить</button>
                     <button style="border-radius: 10px;" class="but" id="reset-btn" type="reset">Очистить форму</button>
@@ -78,12 +118,14 @@
         </form>
     </div>
 </div>
-    <script src="js/viewCounterStorage.js"></script>
-    <script>
-        increaseCounter();
-    </script>
-    <script src="js/listUpdater.js"></script>
-    <script src="js/clockUpdate.js"></script>
-    <script src="js/calendar.js"></script>
+<script src="js/viewCounterStorage.js"></script>
+<script>
+    increaseCounter();
+</script>
+
+<script src="js/contact.js"></script>
+<script src="js/listUpdater.js"></script>
+<script src="js/clockUpdate.js"></script>
+<script src="js/calendar.js"></script>
 </body>
 </html>

@@ -1,0 +1,316 @@
+$background-color: #edf2fa
+$text-color: #49536c
+$highlight-color: #ccdbfd
+$font-family: Arial, sans-serif
+$border-color: #abc4ff
+$hover-bg-color: rgba(171, 196, 255, 0.88)
+$hover-shadow-color: #abc4ff
+$day-bg-color: #ffd1d4
+$day-hover-bg-color: #ffb7c5
+$button-hover-bg-color: #ff8fab
+$error-bg-color: rgba(255, 109, 107, 0.9)
+$valid-bg-color: rgba(163, 255, 176, 0.9)
+$calendar-bg-color: rgba(252, 237, 242, 0.93)
+$active-btn-color: green
+$disabled-btn-color: grey
+
+%common-styles
+  font-family: $font-family
+  color: $text-color
+
+%common-hover
+  &:hover
+    background-color: $hover-bg-color
+    box-shadow: 0 0 20px 10px $hover-shadow-color
+
+body
+  background-color: $background-color
+  margin: 0
+
+.main-body
+  width: 1500px
+  margin-left: 200px
+
+h1, h2, h3, p, span, td
+  @extend %common-styles
+
+header
+  @extend %common-styles
+  margin-left: 50px
+  margin-top: 30px
+
+.list-img, .cat-list-img
+  @extend .common-img
+
+.common-img
+  width: 20px
+  display: inline-block
+  vertical-align: middle
+  height: 17px
+  border: 0
+
+.list-option
+  @extend %common-styles
+  font-size: 100%
+  vertical-align: middle
+
+.nav-div
+  background-color: $highlight-color
+  padding: 20px
+
+  nav > ul
+    display: flex
+    justify-content: space-evenly
+    @extend %common-styles
+    font-size: 110%
+    padding: 0
+    margin: 0 auto
+    width: 100%
+    list-style: none
+    vertical-align: middle
+
+    li
+      @extend .common-nav-item
+
+    .common-nav-item
+      flex: 1
+      text-align: center
+      border-radius: 20px
+      align-self: center
+      vertical-align: middle
+      @extend %common-hover
+
+a
+  color: $text-color
+  text-decoration: none
+
+.submenu-par
+  display: flex
+  justify-content: center
+  position: relative
+
+  .submenu
+    justify-content: center
+    position: absolute
+    top: 100%
+    height: 0
+    overflow: hidden
+    opacity: 0
+    padding: 0
+    border-radius: 20px
+    transition: all 0.5s ease-in
+
+    li
+      @extend .submenu-item
+
+    .submenu-item
+      background-color: rgba(73, 83, 108, 0.75)
+      width: 150px
+      border-radius: 20px
+      list-style: none
+      padding: 10px
+      margin-top: 10px
+      box-shadow: none
+
+      &:hover
+        background-color: rgba(73, 83, 108, 0.75)
+        box-shadow: 0 0 20px 10px $hover-shadow-color
+
+      a
+        color: $highlight-color
+
+footer
+  background-color: $highlight-color
+  font-size: 120%
+  @extend %common-styles
+  text-align: center
+  position: fixed
+  width: 100%
+  bottom: 0
+  left: 0
+
+img
+  border-radius: 20px
+  border: 10px solid $border-color
+
+.info, .block
+  @extend .common-block
+
+.common-block
+  background-color: $highlight-color
+  border-radius: 20px
+  @extend %common-styles
+  text-align: center
+  font-size: 120%
+
+.form
+  background-color: $border-color
+  color: $text-color
+  width: 700px
+  margin: 30px auto
+  padding: 50px 0
+  font-size: 120%
+  font-family: $font-family
+  border-radius: 20px
+  padding-left: 50px - 20px / 2
+  padding-right: 50px - 20px / 2
+
+.but, .field, .scrollbar
+  font-size: 90%
+  color: $text-color
+  border: 2px solid $background-color
+  font-family: $font-family
+
+  &:hover
+    border: 2px solid lighten($highlight-color, 20%)
+    background-color: darken($highlight-color, 10%)
+
+  &:active
+    border: 2px solid rgba(73, 83, 108, 0.75)
+
+button
+  border-radius: 10px
+  padding: 10px
+  outline: none
+
+.calendar-container
+  display: none
+  width: 252px
+  background: $calendar-bg-color
+  margin-top: 10px
+  padding: 5px
+  border-radius: 10px
+  position: fixed
+  z-index: 999
+  opacity: 0
+  overflow: hidden
+
+.scrollbar
+  max-height: 100px
+  overflow-y: auto
+
+.calendar
+  display: flex
+  flex-wrap: wrap
+  margin-top: 5px
+
+.day-block, .weekday-block
+  @extend .common-day-block
+
+.common-day-block
+  color: $text-color
+  padding: 5px
+  width: 22px
+  margin: 2px
+  text-align: center
+  border-radius: 10px
+
+  &.day-block
+    background: $day-bg-color
+
+    &:hover
+      background: lighten($day-hover-bg-color, 10%)
+
+.calendar-but
+  border-radius: 10px
+  padding: 5px
+  margin: 0
+  background: $day-hover-bg-color
+
+  &:hover
+    background: darken($button-hover-bg-color, 10%)
+
+.form-div
+  margin: 0 auto
+  width: 80%
+
+textarea, input.field, input.text, select
+  caret-color: $text-color
+  border-radius: 10px
+  border: 2px solid white
+  outline: none
+
+  &:focus, &:hover
+    border: 2px solid rgba(73, 83, 108, 0.75)
+
+.photoForm
+  display: none
+  position: absolute
+  width: 600px
+  height: 700px
+  margin: 0 auto
+  left: 0
+  right: 0
+  z-index: 10
+  text-align: center
+  background: $border-color
+  border-radius: 20px
+  padding: 10px
+  transition: opacity 1s ease
+
+  &.show
+    opacity: 1
+
+.form-but
+  position: relative
+  margin-top: 30px
+  width: 300px
+  font-size: 120%
+  color: $text-color
+  border: 2px solid $background-color
+  font-family: $font-family
+
+  &:hover
+    border: 2px solid lighten($highlight-color, 20%)
+    background-color: darken($highlight-color, 10%)
+
+  &:active
+    border: 2px solid rgba(73, 83, 108, 0.75)
+
+.field
+  &.error
+    border-radius: 10px
+    background: $error-bg-color
+
+  &.valid
+    border-radius: 10px
+    background: $valid-bg-color
+
+span.error-message, .error-message, .error-message-calendar
+  position: absolute
+  color: $error-bg-color
+  font-size: 90%
+  font-weight: bold
+  display: none
+
+  &.active
+    display: block
+
+.submit-btn
+  background-color: $disabled-btn-color
+  cursor: not-allowed
+
+  &.active
+    background-color: darken($active-btn-color, 10%)
+    cursor: pointer
+
+.current-session-div, .all-session-div
+  text-align: center
+  display: inline-block
+  width: 50%
+
+.current-session-table-div, .all-session-table-div
+  display: flex
+  justify-content: center
+
+.current-session-table, .all-session-table
+  font-size: 120%
+  padding: 10px
+  border-radius: 10px
+  margin-top: 10px
+  color: $text-color
+  background: $highlight-color
+  font-family: $font-family
+
+  td, th
+    padding: 5px 10px

@@ -23,33 +23,29 @@ const pagesArrCur = {
 let storage = window.sessionStorage;
 
 function increaseCounter() {
-    let cntCur = storage.getItem(document.title);
+    let title = $('title').text();
+    let cntCur = storage.getItem(title);
     cntCur++;
-    storage.setItem(document.title, cntCur);
+    storage.setItem(title, cntCur);
 
-    let cntAll = getCookie(document.title)+1;
-    setCookie(document.title, cntAll, 5);
+    let cntAll = getCookie(title)+1;
+    setCookie(title, cntAll, 5);
 }
 
 function updateCounter() {
-    const tdsCur = document.querySelectorAll('.td-cur');
-    tdsCur.forEach(td => {
-        let cnt = storage.getItem(pagesArrCur[td.id]);
-        if(cnt === null){
-            storage.setItem(pagesArrCur[td.id], "0");
-        }
-        td.textContent = storage.getItem(pagesArrCur[td.id]);
+    $(".td-cur").each(function() {
+        let cnt = storage.getItem(pagesArrCur[$(this).attr("id")]) || 0;
+        storage.setItem(pagesArrCur[$(this).attr("id")], cnt);
+        $(this).text(cnt);
     });
 
-    const tdsAll = document.querySelectorAll('.td-all');
-    tdsAll.forEach(td => {
-        console.log(pagesArrAll[td.id]);
-        let cnt = getCookie(pagesArrAll[td.id]);
-        if(!cnt){
-            setCookie(pagesArrAll[td.id], 0, 5);
+    $(".td-all").each(function() {
+        let cnt = getCookie(pagesArrAll[$(this).attr("id")]) || 0;
+        if (cnt === 0) {
+            setCookie(pagesArrAll[$(this).attr("id")], 0, 5);
         }
-        td.textContent = getCookie(pagesArrAll[td.id]).toString();
-    })
+        $(this).text(cnt);
+    });
 }
 
 function setCookie(name, value, days) {

@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
     <title>Тест</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/test.js"></script>
     <script src="js/contact.js"></script>
 </head>
@@ -34,7 +35,7 @@
             <h1>Тест по основам дискретной математики</h1>
         </header>
         <div  class="form" style="width: 1000px; margin-top: 50px; margin-bottom: 50px">
-            <form method="post" action="mailto:ksenia_krr@mail.ru" name="testForm" onsubmit="return checkInputText()" enctype="text/plain">
+            <form method="post" action="mailto:ksenia_krr@mail.ru" id="testForm" name="testForm" enctype="text/plain">
                 <div class="form-div">
                     <label>Фамилия Имя Отчество:
                         <input type="text" name="fio" class="field" ><br><br></label>

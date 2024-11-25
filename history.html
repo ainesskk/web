@@ -3,9 +3,9 @@
 <head>
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>История просмотра</title>
-
-    <script src="js/viewCounterStorage.js"></script>
+    <script defer src="js/viewCounterStorage.js"></script>
 </head>
 <body>
     <div class="nav-div">
@@ -123,9 +123,11 @@
         </div>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-        increaseCounter();
-        updateCounter();
+            increaseCounter();
+            updateCounter();
+        });
     </script>
     <script src="js/listUpdater.js"></script>
     <script src="js/clockUpdate.js"></script>

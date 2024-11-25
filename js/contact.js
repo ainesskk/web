@@ -1,73 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    const submitButton = document.getElementById('submit-btn');
-    submitButton.disabled = true;
+$(document).ready(function() {
+    const contactForm = $('#contactForm');
+    const submitButton = $('#submit-btn');
+    submitButton.prop('disabled', true);
 
     const fields = ['fio', 'birthday', 'email', 'phone', 'message'];
     fields.forEach(field => {
-        const inputElement = contactForm[field];
-        if (inputElement) {
-            inputElement.addEventListener('blur', () => validateField(field));
-            inputElement.addEventListener('input', () => validateField(field));
+        const inputElement = contactForm.find(`[name="${field}"]`);
+        if (inputElement.length) {
+            inputElement.on('blur', () => validateField(field));
+            inputElement.on('input', () => validateField(field));
+            inputElement.on('mouseenter', () => showPopover(field));
+            inputElement.on('mouseleave', () => hidePopover(field));
         }
     });
 
-    const genderRadios = contactForm.querySelectorAll('input[name="gender"]');
-    genderRadios.forEach(radio => {
-        radio.addEventListener('change', activateSubmit);
+    const genderRadios = contactForm.find('input[name="gender"]');
+    genderRadios.each(function() {
+        $(this).on('change', activateSubmit);
     });
 
-    const resetButton = document.getElementById('reset-btn');
-    resetButton.addEventListener('click', function (event) {
-        submitButton.setAttribute('disabled', 'true');
-        resetForm(contactForm);
-    })
-
     function validateField(fieldName) {
-        const field = contactForm[fieldName];
-        const error = document.getElementById(`${fieldName}-error`);
+        const field = contactForm.find(`[name="${fieldName}"]`);
+        const error = $(`#${fieldName}-error`);
         let isValid = false;
-        console.log(`Validating field: ${fieldName}, value: ${field.value}`);
         switch (fieldName) {
             case 'fio':
-                isValid = checkFio(field.value);
+                isValid = checkFio(field.val());
                 break;
             case 'email':
-                isValid = checkEmail(field.value);
+                isValid = checkEmail(field.val());
                 break;
             case 'phone':
-                isValid = checkPhone(field.value);
+                isValid = checkPhone(field.val());
                 break;
             case 'birthday':
             case 'message':
-                isValid = field.value.trim() !== '';
+                isValid = field.val().trim() !== '';
                 break;
         }
 
         if (isValid) {
-            field.classList.remove("error");
-            field.classList.add("valid");
-            if (error) error.style.display = "none";
+            field.removeClass("error").addClass("valid");
+            if (error.length) error.hide();
         } else {
-            field.classList.remove("valid");
-            field.classList.add("error");
-            if (error) error.style.display = "block";
+            field.removeClass("valid").addClass("error");
+            if (error.length) error.show();
         }
 
         activateSubmit();
     }
+
     function resetForm(contactForm) {
-        contactForm.reset();
-
-        const elements = contactForm.querySelectorAll('.valid, .error');
-        elements.forEach(element => {
-            element.classList.remove('valid', 'error');
-        });
-
-        const errorMessages = contactForm.querySelectorAll('.error-message');
-        errorMessages.forEach(error => {
-            error.style.display = 'none';
-        });
+        contactForm.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val('');
+        contactForm.find('input[type="radio"]').prop('checked', false);
+        contactForm.find('select').prop('selectedIndex', 0);
+        contactForm.find('.valid, .error').removeClass('valid error');
+        contactForm.find('.error-message').hide();
     }
 
     function checkEmail(email) {
@@ -81,19 +69,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function checkInput() {
-        const form = document.forms["contactForm"];
-        if (form["fio"].classList.contains("valid")) {
-            console.log("1 верно");
-            if (form["gender"].value) {
-                console.log("2 верно");
-                if (form["birthday"].classList.contains("valid")) {
-                    console.log("3 верно");
-                    if (form["email"].classList.contains("valid")) {
-                        console.log("4 верно");
-                        if (form["phone"].classList.contains("valid") && checkMessage()) {
-                            console.log("5 верно");
-                                return true;
-
+        const form = contactForm;
+        if (form.find(`[name="fio"]`).hasClass("valid")) {
+            if (form.find(`[name="gender"]:checked`).length) {
+                if (form.find(`[name="birthday"]`).hasClass("valid")) {
+                    if (form.find(`[name="email"]`).hasClass("valid")) {
+                        if (form.find(`[name="phone"]`).hasClass("valid") && checkMessage()) {
+                            return true;
                         }
                     }
                 }
@@ -103,9 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function checkMessage() {
-        const form = document.forms["contactForm"];
-        if (form["message"].classList.contains("valid")) {
-            return true;}
+        const form = contactForm;
+        return form.find(`[name="message"]`).hasClass("valid");
     }
 
     function checkFio(fio) {
@@ -122,18 +103,69 @@ document.addEventListener('DOMContentLoaded', function() {
         return cnt === 3;
     }
 
-
-
     function activateSubmit(event) {
-        const submitButton = document.getElementById('submit-btn');
-        console.log("проверка");
         if (checkInput()) {
-            submitButton.removeAttribute('disabled');
-            console.log("кнопка работает");
+            submitButton.prop('disabled', false);
         } else {
-            submitButton.setAttribute('disabled', 'true');
+            submitButton.prop('disabled', true);
         }
     }
 
-});
+    function showPopover(fieldName) {
+        const field = contactForm.find(`[name="${fieldName}"]`);
+        const popover = $(`#${fieldName}-popover`);
+        const offset = field.offset();
+        popover.css({
+            top: offset.top,
+            left: offset.left + field.outerWidth() + 10,
+        }).show();
+    }
 
+    function hidePopover(fieldName) {
+        const popover = $(`#${fieldName}-popover`);
+        setTimeout(() => popover.hide(), 1000);
+    }
+
+    modalWindow();
+
+    function modalWindow() {
+        const form = $("#contactForm");
+        $("#reset-btn").on("click", function(e) {
+            e.preventDefault();
+
+            $(".modal-window").remove();
+            $(".main-body, .nav-div").addClass("blur-background");
+
+            const window = $('<div></div>').addClass('modal-window');
+            const windowText = $('<p></p>').text("Вы уверены, что хотите очистить форму?").css({
+               'font-size': '20px',
+            });
+            const buttonYes = $('<button></button>').text("Да").addClass('form-but').css({
+                'float': 'right',
+                'margin-right': '60px',
+                'width': '20%',
+            });
+            const buttonNo = $('<button></button>').text("Нет").addClass('form-but').css({
+                'margin-left': '60px',
+                'width': '20%',
+            });
+
+            buttonYes.on('click', function(){
+                resetForm(contactForm);
+                window.remove();
+                $(".main-body, .nav-div").removeClass("blur-background");
+            });
+            buttonNo.on('click', function(){
+                window.remove();
+                $(".main-body, .nav-div").removeClass("blur-background");
+            });
+
+            window.append(windowText);
+            window.append(buttonYes);
+            window.append(buttonNo);
+            $('body').append(window);
+
+            window.show();
+        });
+    }
+});

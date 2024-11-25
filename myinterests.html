@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
     <title>Мои интересы</title>
-    <script src="js/myinterests.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!--    <script src="js/myinterests.js"></script>-->
     <style>
         .textbox{
             margin-top: 50px;
@@ -84,11 +85,30 @@
         </header>
         <div style="margin-top: 50px; margin-left: 50px;">
             <h2>Содержание страницы</h2>
+            <div id="content-list"></div>
             <script>
-                outputList("o", "#hobby","Мое хобби",
-                    "#books", "Мои любимые книги",
-                    "#music", "Моя любимая музыка",
-                    "#films", "Мои любимые фильмы")
+                $(document).ready(function() {
+                    outputList("o", "#hobby", "Мое хобби",
+                        "#books", "Мои любимые книги",
+                        "#music", "Моя любимая музыка",
+                        "#films", "Мои любимые фильмы");
+
+                    function outputList(type, ...rest) {
+                        const $list = $(`<${type}l></${type}l>`);
+                        if (type === "o") {
+                            for (let i = 0; i < rest.length; i += 2) {
+                                const $listItem = $(`<li><a href="${rest[i]}">${rest[i + 1]}</a></li>`);
+                                $list.append($listItem);
+                            }
+                        } else {
+                            for (let i = 0; i < rest.length; i += 2) {
+                                const $listItem = $(`<li class="list-option"><a style="margin-left: -5px" href="${rest[i]}">${rest[i + 1]}</a></li>`);
+                                $list.append($listItem);
+                            }
+                        }
+                        $('#content-list').append($list);
+                    }
+                });
             </script>
         </div><br><br>
         <div class="textbox">

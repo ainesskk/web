@@ -3,11 +3,14 @@
 <head>
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/album.js"></script>
+    <script src="js/photoOpener.js"></script>
     <title>Фотоальбом</title>
     <style>
         .photo{
-            width:350px; 
-            float:left; 
+            width:350px;
+            float:left;
             text-align:center;
         }
         .photo3 {
@@ -16,7 +19,7 @@
             text-align:center;
         }
         .pBlock{
-            max-width:1400px; 
+            max-width:1400px;
             float: right;
         }
         img {
@@ -39,11 +42,10 @@
             float: left;
         }
     </style>
-    <script src="js/album.js"></script>
 </head>
 <body>
     <div class="main-body">
-        <header style="margin-bottom: 0px">
+        <header style="margin-bottom: 0">
             <h1>Фотоальбом</h1>
         </header>
         <nav>
@@ -52,26 +54,14 @@
             </ul>
         </nav>
         <div style="margin-top: 50px; margin-right: 50px;">
-            <div class="pBlock">
-                <script>
-                    setPhotos(1, 4);
-                </script>
+            <div id="pb1" class="pBlock">
             </div>
 
-            <div class="pBlock">
-                <script>
-                    setPhotos(5, 4);
-                </script>
+            <div id="pb2" class="pBlock">
             </div>
-            <div class="pBlock">
-                <script>
-                    setPhotos(9, 4);
-                </script>
+            <div id="pb3" class="pBlock">
             </div>
-            <div class="pBlock">
-                <script>
-                    setPhotos(13, 3);
-                </script>
+            <div id="pb4" class="pBlock">
             </div>
         </div>
     </div>
@@ -79,6 +69,5 @@
     <script>
         increaseCounter();
     </script>
-    <script src="js/photoOpener.js"></script>
 </body>
 </html>

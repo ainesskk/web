@@ -1,41 +1,69 @@
-function checkInputText() {
-    let form = document.forms["testForm"];
-    if (form["fio"].value === "") {
-        alert("Пожалуйста, введите ваше ФИО.");
-        form["fio"].focus();
-        return false;
-    }
-    if (!checkFio(document.forms["testForm"])) return false;
-    if (form["group"].value === "") {
-        alert("Пожалуйста, выберите вашу группу.");
-        form["group"].focus();
-        return false;
-    }
-    if (!form["question 1"].value) {
-        alert("Пожалуйста, выберите ответ на 1 вопрос.");
-        return false;
-    }
-    if (form["question 2"].value === "") {
-        alert("Пожалуйста, выберите ответ на 2 вопрос.");
-        form["question 2"].focus();
-        return false;
-    }
-    if (form["question 3"].value === "") {
-        alert("Пожалуйста, введите ответ на 3 вопрос.");
-        form["question 3"].focus();
-        return false;
-    }
-    if (!checkAnswer(document.forms["testForm"])) return false;
-    return true;
-}
+$(document).ready(function() {
+    const form = $("#testForm");
+    form.on('submit', function(event) {
+        if (!checkInputText()) {
+            event.preventDefault();
+        }
+    });
 
-function checkAnswer(formName){
-    let answer = formName["question 3"].value;
-    let words = answer.split(/\s+/);
-    if (words.length < 35) {
-        alert("Пожалуйста, введите не менее 35 слов в ответе.");
-        formName["question 3"].focus();
-        return false;
+    function checkInputText() {
+
+        if (form.find('[name="fio"]').val() === "") {
+            alert("Пожалуйста, введите ваше ФИО.");
+            form.find('[name="fio"]').focus();
+            return false;
+        }
+        if (!checkFio(form)) return false;
+        if (form.find('[name="group"]').val() === "") {
+            alert("Пожалуйста, выберите вашу группу.");
+            form.find('[name="group"]').focus();
+            return false;
+        }
+        if (!form.find('[name="question 1"]').val()) {
+            alert("Пожалуйста, выберите ответ на 1 вопрос.");
+            return false;
+        }
+        if (form.find('[name="question 2"]').val() === "") {
+            alert("Пожалуйста, выберите ответ на 2 вопрос.");
+            form.find('[name="question 2"]').focus();
+            return false;
+        }
+        if (form.find('[name="question 3"]').val() === "") {
+            alert("Пожалуйста, введите ответ на 3 вопрос.");
+            form.find('[name="question 3"]').focus();
+            return false;
+        }
+        if (!checkAnswer(form)) return false;
+        return true;
     }
-    else return true;
-}
+
+    function checkAnswer(form) {
+        let answer = form.find('[name="question 3"]').val();
+        let words = answer.split(/\s+/);
+        if (words.length < 35) {
+            alert("Пожалуйста, введите не менее 35 слов в ответе.");
+            form.find('[name="question 3"]').focus();
+            return false;
+        }
+        return true;
+    }
+
+    function checkFio(form) {
+        let fio = form.find('[name="fio"]').val().trim();
+        let cnt = 0;
+        let startPos = 0;
+        while (fio.indexOf(" ", startPos) >= 0) {
+            cnt++;
+            startPos = fio.indexOf(" ", startPos) + 1;
+        }
+        if (startPos < fio.length) {
+            cnt++;
+        }
+        if (cnt !== 3) {
+            alert("ФИО должно содержать три части.");
+            form.find('[name="fio"]').focus();
+            return false;
+        }
+        return true;
+    }
+});
